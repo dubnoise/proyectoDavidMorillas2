@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\StaticController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,29 +59,25 @@ Route::get('dondeestamos', function () {
 
 
 //FOOTER
-Route::get('politicacookies', function() {
-    return view('politicacookies');
-})->name('politicacookies');
+// Route::get('politicacookies', function() {
+//     return view('politicacookies');
+// })->name('politicacookies');
 
-Route::get('configuracioncookies', function() {
-    return view('configuracioncookies');
-})->name('configuracioncookis');
+// Route::get('configuracioncookies', function() {
+//     return view('configuracioncookies');
+// })->name('configuracioncookis');
 
-Route::get('politicaprivacidad', function() {
-    return view('politicaprivacidad');
-})->name('politicaprivacidad');
+// Route::get('politicaprivacidad', function() {
+//     return view('politicaprivacidad');
+// })->name('politicaprivacidad');
 
-Route::get('terminosycondiciones', function() {
-    return view('terminosycondiciones');
-})->name('terminosycondiciones');
+// Route::get('terminosycondiciones', function() {
+//     return view('terminosycondiciones');
+// })->name('terminosycondiciones');
 
-Route::get('contacto', function () {
-    return view('contacto');
-})->name('contacto');
-
-Route::resource('users', UserController::class);
-Route::resource('events', EventController::class);
-Route::resource('messages', MessageController::class);
+// Route::get('contacto', function () {
+//     return view('contacto');
+// })->name('contacto');
 
 Route::get('registro', [LoginController::class, 'registerForm']);
 Route::post('registro', [LoginController::class, 'register'])->name('registro');
@@ -88,8 +85,21 @@ Route::get('login', [LoginController::class, 'loginForm']);
 Route::post('login', [LoginController::class, 'login'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('cuenta', function(){
-    return view('auth.account');
-})->name('users.account')
-->middleware('auth');
+// Route::get('cuenta', function(){
+//     return view('auth.account');
+// })->name('users.account')
+// ->middleware('auth');
+
+Route::get('static/politicacookies', [StaticController::class, 'politicacookies'])->name('static.politicacookies');
+Route::get('static/dondeestamos', [StaticController::class, 'dondeestamos'])->name('static.dondeestamos');
+Route::get('static/configuracioncookies', [StaticController::class, 'configuracioncookies'])->name('static.configuracioncookies');
+Route::get('static/politicaprivacidad', [StaticController::class, 'politicaprivacidad'])->name('static.politicaprivacidad');
+Route::get('static/terminosycondiciones', [StaticController::class, 'terminosycondiciones'])->name('static.terminosycondiciones');
+
+Route::post('events/addEvent/{event}', [EventController::class, 'addEvent'])->name('events.addEvent');
+Route::post('events/deleteEvent/{event}', [EventController::class, 'deleteEvent'])->name('events.deleteEvent');
+
+Route::resource('users', UserController::class);
+Route::resource('events', EventController::class);
+Route::resource('messages', MessageController::class);
 

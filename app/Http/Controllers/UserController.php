@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         $users = User::all();
         return view ('users.index', compact('users'));
+
     }
 
     /**
@@ -38,6 +39,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
 
+        if ($request->hasFile('profile_img')){
+            $file = $request->file('profile_img');
+            $destinationPath = 'profileImg/';
+            $fileName = auth()->user()->id.'.jpg';
+            $uploadSucces = $request->file('profile_img')->move($destinationPath, $fileName);
+        }
     }
 
     /**
@@ -59,7 +66,13 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
+        // if (file_exists(public_path('img/fotoperfil/hola.jpg'))){
+        //     $user->profileImg = $user->id;
+        // }
+        // else{
+        //     $user->profileImg = 'blank-user';
+        // }
+        return view('users.edit', compact('user'));
     }
 
     /**
@@ -71,7 +84,22 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->birthday = $request->get('birthday');
+        $user->twitter = $request->get('twitter');
+        $user->instagram = $request->get('instagram');
+        $user->twitch = $request->get('twitch');
+        $user->save();
+
+        if ($request->hasFile('profile_img')){
+            $file = $request->file('profile_img');
+            $destinationPath = 'profileImg/';
+            $fileName = $user->id.'.jpg';
+            $uploadSucces = $request->file('profile_img')->move($destinationPath, $fileName);
+        }
+
+        return redirect()->route('users.index');
     }
 
     /**

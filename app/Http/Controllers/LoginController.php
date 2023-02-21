@@ -21,6 +21,13 @@ class LoginController extends Controller
         $user->birthday = $request->get('birthday');
         $user->save();
 
+        if ($request->hasFile('profile_img')){
+            $file = $request->file('profile_img');
+            $destinationPath = 'profileImg/';
+            $fileName = $user->id.'.jpg';
+            $uploadSucces = $request->file('profile_img')->move($destinationPath, $fileName);
+        }
+
         Auth::login($user);
 
         return redirect()->route('users.index');

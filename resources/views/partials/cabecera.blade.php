@@ -4,22 +4,30 @@
     <ul>
 
 
-        @if (Auth::check())
+        @if (Auth::check() && Auth::user()->rol == 'admin')
             <a href="/"><li>Inicio</li></a>
             <a href={{route('users.index')}}><li>Miembros</li></a>
             <a href={{route('events.index')}}><li>Eventos</li></a>
             <a href={{route('messages.create')}}><li>Contacto</li></a>
-            <a href="dondeestamos"><li>Dónde estamos</li></a>
+            <a href={{route('static.dondeestamos')}}><li>Dónde estamos</li></a>
             <a href={{route('events.create')}}><li>Añadir evento</li></a>
             <a href={{route('messages.index')}}><li>Mensajes</li></a>
-            <a href={{route('login')}}><li>Cuenta</li></a>
+            <a href={{route('users.edit', auth()->user()->id)}}><li>Cuenta</li></a>
             <a href={{route('logout')}}><li>Logout</li></a>
-        @else
+        @elseif (Auth::check() && Auth::user()->rol != 'admin')
             <a href="/"><li>Inicio</li></a>
             <a href={{route('users.index')}}><li>Miembros</li></a>
             <a href={{route('events.index')}}><li>Eventos</li></a>
             <a href={{route('messages.create')}}><li>Contacto</li></a>
-            <a href="dondeestamos"><li>Dónde estamos</li></a>
+            <a href={{route('static.dondeestamos')}}><li>Dónde estamos</li></a>
+            <a href={{route('users.edit', auth()->user()->id)}}><li>Cuenta</li></a>
+            <a href={{route('logout')}}><li>Logout</li></a>
+        @elseif (!Auth::check())
+            <a href="/"><li>Inicio</li></a>
+            <a href={{route('users.index')}}><li>Miembros</li></a>
+            <a href={{route('events.index')}}><li>Eventos</li></a>
+            <a href={{route('messages.create')}}><li>Contacto</li></a>
+            <a href={{route('static.dondeestamos')}}><li>Dónde estamos</li></a>
             <a href={{route('registro')}}><li>Registro</li></a>
             <a href={{route('login')}}><li>Login</li></a>
             <a href={{route('logout')}}><li>Logout</li></a>

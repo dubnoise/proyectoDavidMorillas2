@@ -1,7 +1,7 @@
 @extends('layout')
-@section('inicio', 'Inicio - David Morillas')
+
 @section('contenido')
-<div class="eventos">
+<div class="evento">
     <table>
         <tr>
             <th>EVENTO</th>
@@ -25,18 +25,32 @@
             @endforelse
             </td>
         </tr>
-    </table>
-    <a href={{route('events.edit', $event->id)}}>Editar Evento</a>
-    <form action={{route('events.destroy', ['event'=>$event->id])}} method="POST">
-        @csrf
-        @method('delete')
-        <input type="submit" value="Eliminar">
-    </form>
-    <form action={{route('events')}} method="post">
-        @csrf
+        </table>
+    @if (Auth::check() && !$event->users->contains(Auth::user()))
+        <form action={{route('events.addEvent', $event)}} method="post">
+            @csrf
+            <tr><td><input class="btn" type="submit" value="Añadir"></td></tr>
+        </form>
+    @endif
 
-        <input type="submit" value="Añadir al evento">
-    </form>
+    @if (Auth::check() && $event->users->contains(Auth::user()))
+        <form action={{route('events.deleteEvent', $event)}} method="post">
+            @csrf
+            <tr><td><input class="btn" type="submit" value="Quitar"></td></tr>
+        </form>
+    @endif
+
+    @if (Auth::check() && Auth::user()->rol == 'admin')
+        <a class ="btn" href={{route('events.edit', $event->id)}}>Editar Evento</a>
+        <form action={{route('events.destroy', ['event'=>$event->id])}} method="POST">
+            @csrf
+            @method('delete')
+            <tr><td><input class ="btn" type="submit" value="Eliminar"></td></tr>
+        </form>
+    @endif
+
+
+</table>
 </div>
 
 @endsection

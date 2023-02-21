@@ -43,7 +43,7 @@ class MessageController extends Controller
         $message->text = $request->get('text');
         $message->save();
 
-        return redirect()->route('messages.index');
+        return redirect()->route('messages.create');
     }
 
     /**
@@ -77,7 +77,12 @@ class MessageController extends Controller
      */
     public function update(Request $request, Message $message)
     {
-        //
+        $message->name = $request->get('name');
+        $message->subject = $request->get('subject');
+        $message->text = $request->get('text');
+        $message->readed = $request->get('readed');
+        $message->save();
+        return redirect()->route('messages.show', $message);
     }
 
     /**

@@ -13,7 +13,7 @@
         <label for="subject">Subject</label>
         <input type="text" name="subject">
         <label for="text">Texto</label>
-        <input type="text" name="text">
+        <textarea name="text" id="text" cols="30" rows="10" placeholder="Yee"></textarea>
         <input type="submit" value="Enviar">
     </form>
 @endsection

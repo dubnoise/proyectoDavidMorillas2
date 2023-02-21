@@ -69,6 +69,10 @@ header nav ul li:hover{
 }
 
 main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     min-height: 85vh;
 }
 .inicio{
@@ -89,7 +93,7 @@ main{
     font-size: 18px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
-table, table *{
+table, table th, tr, td{
     border: 1px solid black;
     border-collapse: collapse;
     text-align: center;
@@ -131,12 +135,13 @@ footer p{
 .miembros{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     width: 40em;
     margin: 0 auto;
+    min-height: 80vh;
     border:1px solid black;
     border-radius: 5px;
-    align-items: center;
+    /* align-items: center; */
     font-size: 20px;
     background-color: rgba(254, 161, 20, 0.139);
 
@@ -149,10 +154,47 @@ footer p{
     width: 80%;
     height: 2em;
     border-radius: 4px;
+}
+.miembro {
+    display: flex;
+    width: 90vw;
+    justify-content: center;
+    align-items: center;
+    min-height: 20vh;
+    background-color: rgba(199, 125, 15, 0.281);
+}
+.miembro table th{
+    min-width: 10em;
+    height: 2vh;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
 }
+.miembro table td{
+    min-width: 10em;
+    height: 12vh;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 .miembros img{
-    width: 100px;
+    width: 4em;
+    height: 3em;
+    margin-right: 1em;
+    border-radius: 10px;
+}
+.miembro img{
+    width: 7em;
+    height: 5em;
+    margin-right: 0.5em;
+    border-radius: 30%;
+}
+.miembros li{
+    border-radius: 5px;
+    min-width: 40em;
+    border: 1px solid rgba(72, 2, 2, 0.434);
+    display: flex;
+    align-items: center;
+    margin-top: 3em;
+    padding: 20px;
 }
 .miembros ul li a{
     color: white;
@@ -229,6 +271,105 @@ footer p{
 .form-login .btn{
     width: 4em;
 }
-.evento{
-    background-color: aquamarine;
+.eventos{
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid black; */
+    width: 80vw;
+    min-height: 80vh;
 }
+.eventos table{
+    width: 80vw;
+    height: 40vh;
+    background-color:#2460d6be;
+}
+
+.eventos .btn{
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgba(48, 4, 143, 0.315);
+    width: 5em;
+    height: 2em;
+}
+.eventos .btn:hover{
+    cursor: pointer;
+    background-color: rgba(10, 151, 176, 0.329);
+}
+
+.evento{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+}
+.evento table{
+    background-color: #2460d6be;
+    width: 80vw;
+    height: 10vh;
+}
+.evento .btn{
+    font-size: 16px;
+    background-color: rgba(38, 154, 237, 0.546);
+    text-align: center;
+    width: 5em;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+}
+.evento .btn:hover{
+    background-color: rgba(36, 26, 142, 0.852);
+    cursor: pointer;
+}
+.form-account{
+    background-color: rgba(213, 179, 27, 0.265);
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    border: 1px solid rgba(216, 188, 188, 0.591);
+    width: 40%;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.form-account input{
+    padding: 2px;
+    display: flex;
+    margin: 2px;
+    justify-content: center;
+    width: 50%;
+}
+.mensaje{
+    display: flex;
+    background-color: #084cd5be;
+}
+.mensaje table{
+    min-width: 30em;
+    min-height: 5em;
+}
+.mensajes{
+    width: 30em;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    background-color: #084cd5be;
+    border: 1px solid black;
+}
+.mensajes input{
+    border-bottom: 1px solid black;
+    padding: 20px;
+    font-size: 15px;
+    width: 100%;
+}
+.mensajes input:hover{
+    cursor: pointer;
+    background-color: #022468be;
+}
+.mensajes .leido{
+    background-color: #6389d5be;
+}
+.mensaje .no_leido{
+    background-color: #084cd5be;
+}
+

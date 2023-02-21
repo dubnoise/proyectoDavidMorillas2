@@ -30,6 +30,7 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'unique:users'],
             'password' => ['required', Rules\Password::defaults()],
             'birthday' => ['required', 'date'],
+            'profile_img' => ['required'],
         ];
     }
     public function messages()
@@ -41,6 +42,7 @@ class RegisterRequest extends FormRequest
             'email.unique' => 'El email ya existe.',
             'password.required' => 'La contraseña es obligatoria.',
             'birthday.required' => 'La fecha de nacimiento es obligatoria.',
+            'profile_img.required' => 'La foto de perfil es obligatoria.',
         ];
     }
 }

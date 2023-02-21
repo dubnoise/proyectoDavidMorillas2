@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -57,7 +58,8 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        return view ('events.show', compact('event'));
+        $user = User::all();
+        return view ('events.show', compact('event', 'user'));
     }
 
     /**
@@ -90,6 +92,16 @@ class EventController extends Controller
         $event->save();
 
         return redirect()->route('events.index');
+    }
+    public function addEvent(Event $event){
+        $event->users()->attach(auth()->user()->id);
+        return redirect()->route('events.show', $event);
+
+    }
+
+    public function deleteEvent(Event $event){
+        $event->users()->detach(auth()->user()->id);
+        return redirect()->route('events.show', $event);
     }
 
     /**
