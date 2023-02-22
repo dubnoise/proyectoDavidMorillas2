@@ -350,26 +350,42 @@ footer p{
 }
 .mensajes{
     width: 30em;
-    height: 10em;
+    min-height: 10em;
     display: flex;
     flex-direction: column;
-    background-color: #084cd5be;
+    background-color: #043dadbe;
     border: 1px solid black;
 }
 .mensajes input{
     border-bottom: 1px solid black;
     padding: 20px;
+    /* background-color: #134cbdbe; */
     font-size: 15px;
     width: 100%;
 }
-.mensajes input:hover{
+.mensajes .leido input:hover{
     cursor: pointer;
-    background-color: #022468be;
+    background-color: #9ab5eabe;
 }
-.mensajes .leido{
-    background-color: #6389d5be;
+.mensajes .no_leido input:hover{
+    cursor: pointer;
+    background-color: #9ab5eabe;
 }
-.mensaje .no_leido{
-    background-color: #084cd5be;
+.mensajes .leido input{
+    background-color: #6379a5be;
+}
+.mensajes .no_leido input{
+    background-color: #144ab5c7;
 }
 
+.mensaje .btn{
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: rgba(48, 4, 143, 0.315);
+    width: 5em;
+    height: 2em;
+}
+.mensaje .btn:hover{
+    cursor: pointer;
+    background-color: rgba(10, 151, 176, 0.329);
+}

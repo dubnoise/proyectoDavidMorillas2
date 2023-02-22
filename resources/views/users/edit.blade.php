@@ -6,10 +6,10 @@
     @csrf
     @method('put')
 
-    <label for="name">Nombre</label>
+    {{-- <label for="name">Nombre</label>
     <input type="text" name="name" value="{{$user->name}}">
     <label for="email">Email</label>
-    <input type="email" name="email" value="{{$user->email}}">
+    <input type="email" name="email" value="{{$user->email}}"> --}}
     <label for="birthday">Fecha de nacimiento</label>
     <input type="date" name="birthday" value="{{$user->birthday}}">
     <label for="twitter">Twitter</label>
